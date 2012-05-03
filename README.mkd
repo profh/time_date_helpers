@@ -1,0 +1,50 @@
+time_date_helpers
+==========
+This is a series of methods written to handle time and date issues in Ruby and/or Rails.  To be honest, it is more of a teaching example than anything else at this point as there are Ruby equivalents (like strftime) that users may prefer.  The original application was handling time and date issues of a ice cream shop application (tracking shift start and end times, dates for assignments and the like).  In the class we created some modules in lib/ to add custom methods and in the next step we moved those methods into a gem (i.e., time_date_helpers).
+
+Installation
+------------
+Installing this gem is pretty simple -- just type on the command line:
+```  $ gem install time_date_helpers 
+```
+
+And add this gem into any other code with:
+```  require 'rubygems'
+  require 'chronic' 
+  require 'time_date_helpers' 
+```
+
+Usage
+------------
+There are basically two sections to this gem:
+
+* Date helpers
+* Time helpers
+
+(Note: SpaceTime helpers will be added _relatively_ soon...)
+
+
+### Date helpers ###
+
+Most are self-explanatory and some may have other Ruby equivalents already. 
+Right now all I have in here are three formatting/conversion methods, but might expand this over time to add some other useful methods.  The methods in this module were included in Object, so you can access them directly within main, if you wish.
+
+**humanize_date** -- This simply takes a date or datetime and converts it to the standard mm/dd/yyyy display using strftime.  If you pass in the optional argument :style => :full, then you will get the output formatted as full month name, day and year (e.g., "January 15, 1929"). (This latter option also controls for the weird issue with strftime adding a space to the day if it is less than 10; see tests for examples.)
+
+**convert_to_date** -- This takes a string and attempts to parse it using the Chronic gem.  If the date_string can be parsed, then it will return a date; else it will return nil. Because it uses chronic, it can take strings like "tomorrow" or "yesterday at 3pm" or "1 hour ago" and process them into datetime stamps. In this case, however, we are returning a date object, not a datetime object.
+
+**convert_to_datetime** -- Just like the previous method, this takes a string and attempts to parse it using the Chronic gem.  If the date_string can be parsed, then it will return a datetime; else it will return nil.  The returning value is a datetime object.
+
+
+### Time helpers ###
+
+Most are self-explanatory and some may have other Ruby equivalents already. 
+(Actually, there is only one method right now...)  The methods in this module were included in Object, so you can access them directly within main, if you wish.
+
+**round_minutes** -- Round the minutes in an hour up or down given a particular interval. The default setting is to round up based on the quarter-hour (15 minute intervals).  For example, by default using this method would result in _9:04 # => 9:15; 9:42 # => 9:45; 9:55 # => 10:00_.  You can pass along two options: direction (:up or :down) and increment (1 to 59).  For example, round_minutes(time1, :increment => 10, :direction => :down) would round the minutes of time1 down to the closest 10 minute interval (e.g., 9:42 # => 9:40).
+
+Since as noted earlier this was used to manage start and end times of shifts, the method will stop any rounding up at the top of the hour.  Hence, if you had 8 minute increments and the minutes passed in was 59, it would round up to 00 and the next hour, not to 04 and the next hour.
+
+### Note on usage ###
+
+This gem has a set of basic unit tests associated with it.  The tests provide other examples of what is possible using this methods and may help the user further understand how this gem can be applied.
