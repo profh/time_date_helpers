@@ -14,9 +14,11 @@ And add this gem into any other code with:
 
 ```  
 require 'rubygems'
-  require 'chronic' 
-  require 'time_date_helpers' 
+require 'chronic' 
+require 'time_date_helpers' 
 ```
+Note that in irb the chronic gem is required for some of the date helpers. There is a dependency specified in the gem for chronic.
+
 
 Usage
 ------------
