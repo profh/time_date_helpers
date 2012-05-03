@@ -109,7 +109,7 @@ class TimeHelperTests < Test::Unit::TestCase
     assert_equal '03:14:15 pm', humanize_time(time4, :with_seconds => true)
   end
   
-  def test_humanize_time_fails_for_nondates
+  def test_humanize_time_fails_for_nontimes
     time1 = nil
     time2 = "10/04/1986"
     time3 = 3.14159

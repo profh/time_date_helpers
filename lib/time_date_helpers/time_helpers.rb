@@ -42,7 +42,7 @@ module TimeDateHelpers
       options.merge!(opt)
       # Make sure what is passed is legit
       return nil if time.nil? 
-      return nil unless time.class == Time || time.class == DateTime
+      return nil unless time.class == Time
       if options[:ampm]
         options[:with_seconds] ? time.strftime("%I:%M:%S %P") : time.strftime("%I:%M %P")
       else
