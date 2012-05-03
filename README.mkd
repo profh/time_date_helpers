@@ -5,11 +5,15 @@ This is a series of methods written to handle time and date issues in Ruby and/o
 Installation
 ------------
 Installing this gem is pretty simple -- just type on the command line:
-```  $ gem install time_date_helpers 
+
+```  
+$ gem install time_date_helpers 
 ```
 
 And add this gem into any other code with:
-```  require 'rubygems'
+
+```  
+require 'rubygems'
   require 'chronic' 
   require 'time_date_helpers' 
 ```
