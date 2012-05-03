@@ -45,11 +45,14 @@ Right now all I have in here are three formatting/conversion methods, but might 
 ### Time helpers ###
 
 Most are self-explanatory and some may have other Ruby equivalents already. 
-(Actually, there is only one method right now...)  The methods in this module were included in Object, so you can access them directly within main, if you wish.
+(Actually, there is only two methods right now...)  The methods in this module were included in Object, so you can access them directly within main, if you wish.
 
 **round_minutes** -- Round the minutes in an hour up or down given a particular interval. The default setting is to round up based on the quarter-hour (15 minute intervals).  For example, by default using this method would result in _9:04 # => 9:15; 9:42 # => 9:45; 9:55 # => 10:00_.  You can pass along two options: direction (:up or :down) and increment (1 to 59).  For example, round_minutes(time1, :increment => 10, :direction => :down) would round the minutes of time1 down to the closest 10 minute interval (e.g., 9:42 # => 9:40).
 
 Since as noted earlier this was used to manage start and end times of shifts, the method will stop any rounding up at the top of the hour.  Hence, if you had 8 minute increments and the minutes passed in was 59, it would round up to 00 and the next hour, not to 04 and the next hour.
+
+**humanize_time** -- Similar to humanize_date, except that the default display is a 12-hour clock with am/pm and no seconds.  If the option :ampm => false is included, then military (24-hour clock) is used.  If the option :with_seconds => true is included, then seconds will be added to the display.
+
 
 ### Note on usage ###
 

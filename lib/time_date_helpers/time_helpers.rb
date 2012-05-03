@@ -34,6 +34,21 @@ module TimeDateHelpers
       # Finally, return the adjusted time
       Time.new(time.year, time.month, time.day, (time.hour+hr_adj), new_min, 0)
     end
+    
+    def humanize_time(time, opt={})
+      # Set the default options
+      options = {:ampm => true, :with_seconds => false}
+      # Merge whatever options the user has selected with the defaults
+      options.merge!(opt)
+      # Make sure what is passed is legit
+      return nil if time.nil? 
+      return nil unless time.class == Time || time.class == DateTime
+      if options[:ampm]
+        options[:with_seconds] ? time.strftime("%I:%M:%S %P") : time.strftime("%I:%M %P")
+      else
+        options[:with_seconds] ? time.strftime("%H:%M:%S") : time.strftime("%H:%M")
+      end
+    end
   end
 end
 

@@ -74,4 +74,47 @@ class TimeHelperTests < Test::Unit::TestCase
     assert_equal('09:56', round_minutes(time5, :direction => :down, :increment => inc).strftime('%H:%M'))
     assert_equal('09:56', round_minutes(time6, :direction => :down, :increment => inc).strftime('%H:%M'))
   end
+  
+  # Test humanize_time
+  def test_humanize_time_works
+    time1 = Time.new(2012, 01, 01, 0, 0, 0)
+    time2 = Time.new(2012, 01, 01, 9, 36, 59)
+    time3 = Time.new(2012, 01, 01, 11, 11, 11)
+    time4 = Time.new(2012, 01, 01, 15, 14, 15)
+    assert_equal '12:00 am', humanize_time(time1)
+    assert_equal '09:36 am', humanize_time(time2)
+    assert_equal '11:11 am', humanize_time(time3)
+    assert_equal '03:14 pm', humanize_time(time4)
+  end
+  
+  def test_humanize_time_works_with_military_time
+    time1 = Time.new(2012, 01, 01, 0, 0, 0)
+    time2 = Time.new(2012, 01, 01, 9, 36, 59)
+    time3 = Time.new(2012, 01, 01, 11, 11, 11)
+    time4 = Time.new(2012, 01, 01, 15, 14, 15)
+    assert_equal '00:00', humanize_time(time1, :ampm => false)
+    assert_equal '09:36', humanize_time(time2, :ampm => false)
+    assert_equal '11:11', humanize_time(time3, :ampm => false)
+    assert_equal '15:14', humanize_time(time4, :ampm => false)
+  end
+  
+  def test_humanize_time_works_with_seconds_option
+    time1 = Time.new(2012, 01, 01, 0, 0, 0)
+    time2 = Time.new(2012, 01, 01, 9, 36, 59)
+    time3 = Time.new(2012, 01, 01, 11, 11, 11)
+    time4 = Time.new(2012, 01, 01, 15, 14, 15)
+    assert_equal '12:00:00 am', humanize_time(time1, :with_seconds => true)
+    assert_equal '09:36:59 am', humanize_time(time2, :with_seconds => true)
+    assert_equal '11:11:11 am', humanize_time(time3, :with_seconds => true)
+    assert_equal '03:14:15 pm', humanize_time(time4, :with_seconds => true)
+  end
+  
+  def test_humanize_time_fails_for_nondates
+    time1 = nil
+    time2 = "10/04/1986"
+    time3 = 3.14159
+    assert_nil humanize_time(time1)
+    assert_nil humanize_time(time2)
+    assert_nil humanize_time(time3)
+  end
 end
