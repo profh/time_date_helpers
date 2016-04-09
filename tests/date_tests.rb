@@ -45,6 +45,7 @@ class DateHelperTests < Test::Unit::TestCase
     date5 = "April 1, 1999"
     assert_equal 10, convert_to_date(date1).month
     assert_equal Date.today + 1, convert_to_date(date2)
+    # note that the assertion below will fail right after the switch to/from DST 
     assert_equal Date.today - 1, convert_to_date(date3)
     assert_equal 25, convert_to_date(date4).day
     assert_equal 1999, convert_to_date(date5).year
@@ -64,6 +65,7 @@ class DateHelperTests < Test::Unit::TestCase
     today = Date.today
     assert_equal 10, convert_to_datetime(datetime1).month
     assert_equal Time.new((today).year, (today).month, (today+1).day, 12, 0, 0), convert_to_datetime(datetime2)
+    # note that the assertion below will fail right after the switch to/from DST
     assert_equal Time.new((today).year, (today).month, (today-1).day, 15, 0, 0), convert_to_datetime(datetime3)
     assert_equal 8, convert_to_datetime(datetime4).hour
     assert_equal 22, convert_to_datetime(datetime5).hour
