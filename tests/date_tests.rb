@@ -1,8 +1,8 @@
-require 'test/unit'
+require "minitest/autorun"
 require 'chronic'
 require 'time_date_helpers'
 
-class DateHelperTests < Test::Unit::TestCase
+class DateHelperTests < Minitest::Test
   
   # Test humanize_date method
   def test_humanize_date_works

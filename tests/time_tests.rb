@@ -1,7 +1,7 @@
-require 'test/unit'
+require "minitest/autorun"
 require 'time_date_helpers'
 
-class TimeHelperTests < Test::Unit::TestCase
+class TimeHelperTests < Minitest::Test
   
   def test_default_settings
     quarter1 = Time.new(2012, 04, 30, 9, 6, 0)
