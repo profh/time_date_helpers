@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "time_date_helpers"
   s.version     = TimeDateHelpers::VERSION
   s.authors     = ["Klingon Code Warrior"]
+  s.licenses    = ['MIT']
   s.email       = ["profh@cmu.edu"]
   s.homepage    = "https://github.com/profh/time_date_helpers"
   s.summary     = %q{A series of helpers to deal with time and date issues in Rails.}

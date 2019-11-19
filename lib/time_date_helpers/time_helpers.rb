@@ -35,7 +35,7 @@ module TimeDateHelpers
       Time.new(time.year, time.month, time.day, (time.hour+hr_adj), new_min, 0)
     end
     
-    def round_hours(start, end, opt={})
+    def round_hours(start_time, end_time, opt={})
       # Set the default options
       options = {:direction => :up, :increment => 15}
       # Merge whatever options the user has selected with the defaults
@@ -46,7 +46,7 @@ module TimeDateHelpers
       return nil if (options[:increment] > 59 || options[:increment] < 1)
 
       # Set up some local variables used in calculations
-      new_start_min, new_end_min hr_adj = start.min, end.min, 0
+      new_start_min, new_end_min, hr_adj = start_time.min, end_time.min, 0
       total_segments = (60.0/options[:increment]).ceil # Need to round up
       closest_segment_down = (new_min/options[:increment])
       closest_segment_up = (new_min/options[:increment]) + 1
