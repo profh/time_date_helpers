@@ -1,6 +1,6 @@
 time_date_helpers
 ==========
-This is a series of methods written to handle time and date issues in Ruby and/or Rails.  To be honest, it is more of a teaching example than anything else at this point as there are Ruby equivalents (like strftime) that users may prefer.  The original application was handling time and date issues of a ice cream shop application (tracking shift start and end times, dates for assignments and the like).  In the class we created some modules in lib/ to add custom methods and in the next step we moved those methods into a gem (i.e., time_date_helpers).
+This is a series of methods written to handle time and date issues in Ruby and/or Rails.  To be honest, it is more of a teaching example than anything else at this point as there are Ruby equivalents (like strftime) that users may prefer.  The original application was handling time and date issues of a employee management application (tracking shift start and end times, dates for assignments and the like).  In the class we created some modules in lib/ to add custom methods and in the next step we moved those methods into a gem (i.e., time_date_helpers).
 
 Installation
 ------------
