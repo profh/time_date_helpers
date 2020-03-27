@@ -6,10 +6,11 @@ class DateHelperTests < Minitest::Test
   
   # Test humanize_date method
   def test_humanize_date_works
-    date1 = Time.new(1776, 07, 04, 0, 0, 0)
-    date2 = Date.new(1929, 01, 15)
-    date3 = DateTime.new(1986, 10, 04, 0, 0, 0)
-    date4 = Time.new(2012, 12, 25, 0, 0, 0)
+                                                          ### Great Dates in History ###
+    date1 = Time.new(1776, 07, 04, 0, 0, 0)               # Declaration of Independence signed
+    date2 = Date.new(1929, 01, 15)                        # Martin Luther King, Jr. born
+    date3 = DateTime.new(1986, 10, 04, 0, 0, 0)           # Day I married my sweetheart
+    date4 = Time.new(2012, 12, 25, 0, 0, 0)               # Christmas (celebrating the incarnation of Jesus)
     assert_equal '07/04/1776', humanize_date(date1)
     assert_equal '01/15/1929', humanize_date(date2)
     assert_equal '10/04/1986', humanize_date(date3)
